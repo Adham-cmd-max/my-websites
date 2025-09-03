@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تطبيق يجعلك تراقب اولادك</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <video  id="mood-killer" autoplay muted loop playsinline > 
+        <source src="ملحق لا تفتح3.mp4" type="video/mp4">
+    </video>   
+    <button id="btn1"  onclick="btn1Clicked()">اضغطني لرؤيه البرنامج </button>
+    <audio  id="sound" src="ملحق لا تفتح 2.wav" loop></audio>
+<button id="btn2" onclick="showtext()" style="display: none;">لقد اقتربت اضغطني</button>
+<p id="Text" style="display: none;">اهلا حج طاهر لقد تم تهكيريك معك  15 ثانيه  لاخبار ابنك انه جامد للمره الاخيره في حياتك حج طاهر عبد الفتاح درويش</p>
+<p id="timer" style="display:none; color:red; font-size:24px; text-align:center;"></p>
+<p id="finalText" style="display: none; color:rgb(12, 8, 207);font-size:24px; text-align:center;">لقد تم خداعك حج طاهر اشكر الله</p>
+ <video id= "happy-cat"  loop preload="auto" playsinline style="display: none;"> 
+        <source src="ملحق لا تفتح.mp4" type="video/mp4">
+    </video>   
+<script>
+    function btn1Clicked() {
+        document.getElementById("sound").play();
+        document.getElementById("btn1").style.display= "none";
+        document.getElementById("btn2").style.display= "inline";
+    }
+    function showtext(){
+        document.getElementById("Text").style.display= "block";
+        document.getElementById("btn2").style.display= "none";
+        document.getElementById("timer").style.display= "block"
+        
+        let timeleft= 15;
+        let timerElement = document.getElementById("timer");
+        let countdown = setInterval(() => { timerElement.innerText = "الوقت المتبقي"+ timeleft + "ثانيه";
+        timeleft--;
+        if (timeleft<0) {
+            clearInterval(countdown);
+            timerElement.innerText = "انتهي وقتك حج طاهر"
+            document.getElementById("mood-killer").style.display = "block"; 
+            document.getElementById("mood-killer").pause();
+            document.getElementById("sound").pause();
+            document.getElementById("finalText").style.display = "block"; 
+            document.getElementById("Text").style.display = "none";
+            document.getElementById("timer").style.display= "none";
+            let happyVideo = document.getElementById("happy-cat");
+            happyVideo.style.display = "block";
+            happyVideo.play()
+        }
+            
+        }, 1000);
+    }
+</script>
+</body>
+</html>
